@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# vodces
 
-## Getting Started
+App web de **Kick VODs** para el streamer **elcesarlive**, construida con **Next.js 16 + TypeScript + Tailwind + shadcn/ui**.
 
-First, run the development server:
+Usa endpoints `GET` públicos de Kick (sin OAuth) para:
+
+- Mostrar live actual + VODs recientes.
+- Mostrar mejores momentos (clips) con paginación.
+- Editar VOD en ruta dedicada con trimmer.
+- Previsualizar el recorte en paralelo.
+- Descargar recorte en `m3u8` o `mp4`.
+
+## Stack
+
+- Next.js `16.1.6`
+- React `19`
+- TypeScript
+- Tailwind CSS `v4`
+- shadcn/ui + Radix
+- `hls.js` + `video.js`
+- `ffmpeg-static` (export MP4 en servidor)
+
+## Inicio rápido
+
+```bash
+npm install
+npm run dev
+```
+
+Abre `http://localhost:3000`.
+
+## Rutas principales
+
+- `/` Home: live + VODs + best moments.
+- `/vod/edit?uuid=<videoUuid>&start=<sec>&end=<sec>` editor full del VOD.
+- `/moment/view?src=<m3u8>&title=<texto>` visor externo de momentos.
+
+## Endpoints API internos
+
+- `GET /api/kick/streamer/[slug]`
+- `GET /api/kick/video/[uuid]`
+- `GET /api/kick/media?u=<https-url>`
+- `GET /api/kick/export/m3u8?u=<https-url>&start=<sec>&end=<sec>&name=<file>`
+- `GET /api/kick/export/mp4?u=<https-url>&start=<sec>&end=<sec>&name=<file>`
+
+## Flujo de edición
+
+- Selecciona VOD desde Home y abre `Editar VOD`.
+- Ajusta inicio/fin con trimmer o inputs.
+- Reproduce la vista previa del recorte (loop opcional y calidad seleccionable).
+- Descarga el tramo en `m3u8` o `mp4`.
+
+## Límites actuales
+
+- Export `mp4`: máximo `900s` por archivo.
+- Export `m3u8`: máximo `43200s` (12h).
+- El origen está fijado al canal `elcesarlive`.
+
+## Seguridad aplicada
+
+- Validación estricta de `slug`, `uuid`, `start`, `end`.
+- Solo URLs `https` y hosts permitidos de Kick/CDN.
+- Bloqueo de destinos locales/privados para evitar SSRF.
+- Proxy de media con reescritura controlada de playlists HLS.
+- Sanitización de nombre de archivo de descarga.
+
+## Scripts
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run build
+npm run start
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
