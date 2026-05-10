@@ -5,6 +5,8 @@ const MAX_EXPORT_DURATION_SECONDS = 43_200;
 const MAX_BOUNDARY_SECONDS = 43_200;
 
 const SAFE_MEDIA_HOSTS = [
+  "kick.com",
+  "www.kick.com",
   "clips.kick.com",
   "stream.kick.com",
   "files.kick.com",

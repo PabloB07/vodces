@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kick VOD Player | elcesarlive",
+  title: "Kick VOD Player | moaigr",
   description:
-    "Player de VODs y best moments de Elcesarlive para Kick!.",
+    "Player de VODs y best moments de moaigr para Kick!.",
 };
 
 export default function RootLayout({

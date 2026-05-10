@@ -20,7 +20,7 @@ const SAFE_KICK_HOSTS = new Set([
   "stream.kick.com",
 ]);
 
-export const STREAMER_SLUG = "elcesarlive";
+export const STREAMER_SLUG = "moaigr";
 
 export type KickStreamerProfile = {
   id: number | null;
@@ -316,7 +316,7 @@ async function fetchKickJson(version: "v1" | "v2", path: string): Promise<FetchR
       method: "GET",
       headers: {
         Accept: "application/json",
-        "User-Agent": "vodces/1.0 (+https://kick.com/elcesarlive)",
+        "User-Agent": "vodces/1.0 (+https://kick.com/moaigr)",
       },
       next: {
         revalidate: KICK_CACHE_SECONDS,

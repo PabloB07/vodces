@@ -25,6 +25,8 @@ const FFMPEG_CANDIDATE_PATHS = [
 ].filter((value): value is string => typeof value === "string" && value.length > 0);
 
 const SAFE_MEDIA_HOSTS = [
+  "kick.com",
+  "www.kick.com",
   "clips.kick.com",
   "stream.kick.com",
   "files.kick.com",

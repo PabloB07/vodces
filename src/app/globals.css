@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "video.js/dist/video-js.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -115,6 +114,13 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --editor-accent: oklch(0.6 0.3 290);
+  --editor-accent-soft: oklch(0.5 0.25 290 / 0.12);
+  --editor-panel-bg: oklch(0.16 0.01 290);
+  --editor-glass: oklch(1 0 0 / 0.04);
+  --editor-glass-border: oklch(1 0 0 / 0.06);
+  --editor-glow: 0 0 24px oklch(0.6 0.3 290 / 0.15);
 }
 
 @layer base {
@@ -162,6 +168,22 @@
       color-mix(in oklch, var(--primary) 95%, white 5%),
       color-mix(in oklch, var(--primary) 75%, black 25%)
     );
+  }
+
+  .gpu-layer {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  .gpu-canvas {
+    image-rendering: auto;
+    will-change: contents;
+  }
+
+  .gpu-animate {
+    will-change: transform, opacity;
   }
 }
 

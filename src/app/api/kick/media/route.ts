@@ -4,6 +4,8 @@ const KICK_MEDIA_TIMEOUT_MS = 15_000;
 const KICK_MEDIA_PATH = "/api/kick/media";
 
 const SAFE_MEDIA_HOSTS = [
+  "kick.com",
+  "www.kick.com",
   "clips.kick.com",
   "stream.kick.com",
   "files.kick.com",

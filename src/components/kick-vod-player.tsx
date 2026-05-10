@@ -39,8 +39,8 @@ const QUALITY_AUTO = "auto";
 const VODS_PAGE_SIZE = 6;
 const MOMENTS_PAGE_SIZE = 4;
 const DEFAULT_SNAP_STEP_SEC = 1;
-const ELCESAR_BANNER_URL =
-  "https://files.kick.com/images/channel-links/1450371/image/conversion/04b35414-5d0d-4ce3-b25a-1f4bec241930-image.webp";
+const MOAIGR_BANNER_URL =
+  "https://files.kick.com/images/channel/12312071/banner_image/d1d7d409-c553-4da1-8519-69fd7bbca85d";
 const ThemeToggle = dynamic(
   () => import("@/components/theme-toggle").then((mod) => mod.ThemeToggle),
   { ssr: false },
@@ -994,7 +994,7 @@ export default function KickVodPlayer({ defaultStreamer }: Props) {
       const data = await getStreamerDataWithFallback();
       if (!data) {
         if (!silent) {
-          setErrorMessage("No se pudo cargar el canal elcesarlive.");
+          setErrorMessage("No se pudo cargar el canal moaigr.");
         }
         return;
       }
@@ -1473,7 +1473,7 @@ export default function KickVodPlayer({ defaultStreamer }: Props) {
 
     return getVodEditorUrl(selectedVod);
   }, [getVodEditorUrl, selectedVod]);
-  const bannerImageUrl = ELCESAR_BANNER_URL;
+  const bannerImageUrl = MOAIGR_BANNER_URL;
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -1487,14 +1487,14 @@ export default function KickVodPlayer({ defaultStreamer }: Props) {
               <>
                 <Image
                   src={bannerImageUrl}
-                  alt="banner elcesarlive"
+                  alt="banner moaigr"
                   fill
                   sizes="100vw"
                   className="object-cover blur-md brightness-50"
                 />
                 <Image
                   src={bannerImageUrl}
-                  alt="banner completo elcesarlive"
+                  alt="banner completo moaigr"
                   fill
                   sizes="100vw"
                   className="object-contain p-2 sm:p-4"
@@ -1508,14 +1508,14 @@ export default function KickVodPlayer({ defaultStreamer }: Props) {
           </div>
           <div className="relative z-10 flex flex-col gap-4 p-4 text-white sm:p-6">
             <Badge className="w-fit bg-emerald-500 text-black hover:bg-emerald-500">
-              elcesarlive • VOD Lab
+              moaigr • VOD Lab
             </Badge>
             <div className="space-y-2">
               <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
-                Live + VODs de elcesarlive
+                Live + VODs de moaigr
               </h1>
               <p className="max-w-3xl text-sm text-white/85 sm:text-base">
-                Player de VODs y best moments de Elcesarlive para Kick!
+                Player de VODs y best moments de moaigr para Kick!
                 Usa el boton Ver VOD para ver el clip en el VOD.
               </p>
             </div>
@@ -1652,7 +1652,7 @@ export default function KickVodPlayer({ defaultStreamer }: Props) {
           <Card>
             <CardContent className="flex items-center justify-center gap-2 p-6 text-sm text-muted-foreground">
               <LoaderCircle className="h-4 w-4 animate-spin" />
-              Cargando VODs de elcesarlive...
+              Cargando VODs de moaigr...
             </CardContent>
           </Card>
         )}
